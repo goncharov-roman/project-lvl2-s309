@@ -1,0 +1,39 @@
+{
+  "name": "gendiff-project",
+  "version": "0.0.5",
+  "description": "Gendiff project",
+  "main": "index.js",
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
+  "scripts": {
+    "babel-node": "babel-node",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "eslint": "eslint",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/goncharov-roman/project-lvl2-s309.git"
+  },
+  "author": "Goncharov Roman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goncharov-roman/project-lvl2-s309/issues"
+  },
+  "homepage": "https://github.com/goncharov-roman/project-lvl2-s309#readme",
+  "dependencies": {
+    "commander": "^2.17.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0"
+  }
+}
