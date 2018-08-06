@@ -2,7 +2,7 @@
   "name": "gendiff-project",
   "version": "0.0.5",
   "description": "Gendiff project",
-  "main": "index.js",
+  "main": "dist/index.js",
   "bin": {
     "gendiff": "dist/bin/gendiff.js"
   },
@@ -11,7 +11,7 @@
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "eslint": "eslint",
     "prepublishOnly": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -24,16 +24,26 @@
   },
   "homepage": "https://github.com/goncharov-roman/project-lvl2-s309#readme",
   "dependencies": {
-    "commander": "^2.17.0"
+    "commander": "^2.17.0",
+    "lodash": "^4.17.10"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.6",
+    "babel-jest": "^23.4.2",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.0.0",
-    "eslint-plugin-import": "^2.13.0"
+    "eslint-plugin-import": "^2.13.0",
+    "jest": "^23.4.2",
+    "jest-cli": "^23.4.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "modulePathIgnorePatterns": [
+      "<rootDir>/__tests__/__fixtures__/"
+    ]
   }
 }
