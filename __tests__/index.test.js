@@ -1,4 +1,4 @@
-/*  import fs from 'fs';
+import fs from 'fs';
 import genDiff from '../src';
 
 const dir = `${__dirname}/__fixtures__`;
@@ -11,4 +11,4 @@ test('genDiff test', () => {
   const result = genDiff(file1, file2);
 
   expect(result).toBe(expected);
-}); */
+});

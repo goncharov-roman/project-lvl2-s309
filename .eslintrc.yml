@@ -2,6 +2,10 @@
 
 env:
   node: true
+  jest: true
+
+plugins:
+  - jest
 
 parser: babel-eslint
 

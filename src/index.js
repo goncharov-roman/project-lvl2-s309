@@ -15,7 +15,7 @@ const genDiff = (path1, path2) => {
       if (parsed1[key] === parsed2[key]) {
         return `${acc}\n    ${key}: ${parsed1[key]}`;
       }
-      return `${acc}\n  + ${key}: ${parsed2[key]}\n  - ${key}: ${parsed1[key]}\n`;
+      return `${acc}\n  + ${key}: ${parsed2[key]}\n  - ${key}: ${parsed1[key]}`;
     }
     if (!_.has(parsed1, key)) {
       return `${acc}\n  + ${key}: ${parsed2[key]}`;
@@ -23,7 +23,7 @@ const genDiff = (path1, path2) => {
     return `${acc}\n  - ${key}: ${parsed1[key]}`;
   }, '');
 
-  return `{\n${result}\n}`;
+  return `{${result}\n}\n`;
 };
 
-export default genDiff();
+export default genDiff;
