@@ -28,6 +28,7 @@
   "homepage": "https://github.com/goncharov-roman/project-lvl2-s309#readme",
   "dependencies": {
     "commander": "^2.17.0",
+    "js-yaml": "^3.12.0",
     "lodash": "^4.17.10"
   },
   "devDependencies": {

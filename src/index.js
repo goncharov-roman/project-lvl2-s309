@@ -1,12 +1,17 @@
 import fs from 'fs';
 import _ from 'lodash';
+import Yaml from 'js-yaml';
+import path from 'path';
 
 const genDiff = (path1, path2) => {
   const file1 = fs.readFileSync(path1, 'utf-8');
   const file2 = fs.readFileSync(path2, 'utf-8');
 
-  const parsed1 = JSON.parse(file1);
-  const parsed2 = JSON.parse(file2);
+  const parse = path.extname(path1) === '.yml' || path.extname(path1) === '.yaml'
+    ? Yaml.safeLoad : JSON.parse;
+
+  const parsed1 = parse(file1);
+  const parsed2 = parse(file2);
 
   const keys = _.union(Object.keys(parsed1), Object.keys(parsed2));
 
