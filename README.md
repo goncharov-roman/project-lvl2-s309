@@ -5,3 +5,4 @@ Compares two configuration files and shows a difference.
 
 [Step 2](https://asciinema.org/a/2jHc7FQRJom7aH0ICYPkozbdj)
 [Step 3](https://asciinema.org/a/aVYZwCuOXQ3P4iGGkSS7iLojA)
+[Step 4](https://asciinema.org/a/7fsNnzrxZbEJirV3xYgquDa4R)
