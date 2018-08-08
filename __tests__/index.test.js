@@ -22,3 +22,13 @@ test('yaml test', () => {
 
   expect(result).toBe(expected);
 });
+
+test('ini test', () => {
+  const file1 = `${dir}/before.ini`;
+  const file2 = `${dir}/after.ini`;
+
+  const expected = fs.readFileSync(`${dir}/expected.txt`, 'utf-8');
+  const result = genDiff(file1, file2);
+
+  expect(result).toBe(expected);
+});

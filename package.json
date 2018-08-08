@@ -1,6 +1,6 @@
 {
   "name": "gendiff-project",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Gendiff project",
   "main": "dist/index.js",
   "bin": {
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/goncharov-roman/project-lvl2-s309#readme",
   "dependencies": {
     "commander": "^2.17.0",
+    "ini": "^1.3.5",
     "js-yaml": "^3.12.0",
     "lodash": "^4.17.10"
   },
