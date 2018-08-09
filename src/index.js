@@ -5,7 +5,7 @@ import parser from './parser';
 import genAst from './genAst';
 import getRenderFunc from './renderers';
 
-const genDiff = (path1, path2, outputFormat) => {
+const genDiff = (path1, path2, outputFormat = 'tree') => {
   const parse = parser(path.extname(path1));
   const parsed1 = parse(fs.readFileSync(path1, 'utf-8'));
   const parsed2 = parse(fs.readFileSync(path2, 'utf-8'));
