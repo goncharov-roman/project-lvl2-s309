@@ -10,10 +10,7 @@ const render = (ast, path = []) => {
       children,
     } = item;
     const newPath = [...path, key];
-    const pathString = `${newPath.slice(0, -1).join('.')}.`;
-    const pathToKey = path.length > 0 ? pathString : '';
-    console.log(newPath, pathString, pathToKey);
-    const startLine = `Property '${pathToKey}${key}' was`;
+    const startLine = `Property '${newPath.join('.')}' was`;
     switch (type) {
       case 'added': {
         const value = !isPlainObject(newValue) ? `${newValue}` : '[complex value]';
