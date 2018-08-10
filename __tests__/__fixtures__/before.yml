@@ -10,4 +10,4 @@ group1:
   nest:
     key: 'value'
 group2:
-  abc: 12345
+  abc: '12345'

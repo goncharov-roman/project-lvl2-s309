@@ -16,20 +16,21 @@ const render = (ast, l = 0) => {
       oldValue,
       children,
     } = item;
-    if (type === 'complex') {
-      return [...acc, `    ${key}: ${render(children, l + 1)}`];
+    switch (type) {
+      case 'complex':
+        return [...acc, `    ${key}: ${render(children, l + 1)}`];
+      case 'actual':
+        return [...acc, `    ${key}: ${stringify(oldValue, l + 1)}`];
+      case 'changed':
+        return [...acc, `  - ${key}: ${stringify(oldValue, l + 1)}`,
+          `  + ${key}: ${stringify(newValue, l + 1)}`];
+      case 'deleted':
+        return [...acc, `  - ${key}: ${stringify(oldValue, l + 1)}`];
+      case 'added':
+        return [...acc, `  + ${key}: ${stringify(newValue, l + 1)}`];
+      default:
+        return acc;
     }
-    if (type === 'actual') {
-      return [...acc, `    ${key}: ${stringify(oldValue, l + 1)}`];
-    }
-    if (type === 'changed') {
-      return [...acc, `  - ${key}: ${stringify(oldValue, l + 1)}`,
-        `  + ${key}: ${stringify(newValue, l + 1)}`];
-    }
-    if (type === 'deleted') {
-      return [...acc, `  - ${key}: ${stringify(oldValue, l + 1)}`];
-    }
-    return [...acc, `  + ${key}: ${stringify(newValue, l + 1)}`];
   }, []);
   const margin = '    '.repeat(l);
   const result = diff.join(`\n${margin}`);
