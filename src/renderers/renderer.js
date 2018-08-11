@@ -10,11 +10,7 @@ const stringify = (value, l) => {
 const render = (ast, l = 0) => {
   const diff = ast.map((item) => {
     const {
-      key,
-      type,
-      newValue,
-      oldValue,
-      children,
+      key, type, newValue, oldValue, children,
     } = item;
     switch (type) {
       case 'complex':

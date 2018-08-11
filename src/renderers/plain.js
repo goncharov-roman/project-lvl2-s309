@@ -3,11 +3,7 @@ import { compact, flattenDeep, isPlainObject } from 'lodash';
 const render = (ast, path = []) => {
   const plained = ast.map((item) => {
     const {
-      key,
-      newValue,
-      oldValue,
-      type,
-      children,
+      key, type, newValue, oldValue, children,
     } = item;
     const newPath = [...path, key];
     const startLine = `Property '${newPath.join('.')}' was`;
