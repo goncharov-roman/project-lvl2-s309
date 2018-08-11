@@ -14,68 +14,60 @@ const readFilesAndExpected = (extension, outputFormat) => {
     outputFormatInExpected = '';
   }
   const expected = fs.readFileSync(`${dir}/expected${outputFormatInExpected}.txt`, 'utf-8').trim();
-  return { file1, file2, expected };
+  const result = genDiff(file1, file2, outputFormat);
+  return { result, expected };
 };
 
 test('tree format json test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('json', 'tree');
-  const result = genDiff(file1, file2, 'tree');
+  const { result, expected } = readFilesAndExpected('json', 'tree');
 
   expect(result).toBe(expected);
 });
 
 test('plain format json test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('json', 'plain');
-  const result = genDiff(file1, file2, 'plain');
+  const { result, expected } = readFilesAndExpected('json', 'plain');
 
   expect(result).toBe(expected);
 });
 
 test('json format json test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('json', 'json');
-  const result = genDiff(file1, file2, 'json');
+  const { result, expected } = readFilesAndExpected('json', 'json');
 
   expect(result).toBe(expected);
 });
 
 test('tree format yaml test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('yml', 'tree');
-  const result = genDiff(file1, file2, 'tree');
+  const { result, expected } = readFilesAndExpected('yml', 'tree');
 
   expect(result).toBe(expected);
 });
 
 test('plain format yaml test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('yml', 'plain');
-  const result = genDiff(file1, file2, 'plain');
+  const { result, expected } = readFilesAndExpected('yml', 'plain');
 
   expect(result).toBe(expected);
 });
 
 test('json format yaml test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('yml', 'json');
-  const result = genDiff(file1, file2, 'json');
+  const { result, expected } = readFilesAndExpected('yml', 'json');
 
   expect(result).toBe(expected);
 });
 
 test('tree format ini test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('ini', 'tree');
-  const result = genDiff(file1, file2, 'tree');
+  const { result, expected } = readFilesAndExpected('ini', 'tree');
 
   expect(result).toBe(expected);
 });
 
 test('plain format ini test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('ini', 'plain');
-  const result = genDiff(file1, file2, 'plain');
+  const { result, expected } = readFilesAndExpected('ini', 'plain');
 
   expect(result).toBe(expected);
 });
 
 test('json format ini test', () => {
-  const { file1, file2, expected } = readFilesAndExpected('ini', 'json');
-  const result = genDiff(file1, file2, 'json');
+  const { result, expected } = readFilesAndExpected('ini', 'json');
 
   expect(result).toBe(expected);
 });
