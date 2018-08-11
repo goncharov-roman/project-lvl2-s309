@@ -25,8 +25,10 @@ const render = (ast, path = []) => {
       }
       case 'complex':
         return render(children, newPath);
-      default:
+      case 'actual':
         return '';
+      default:
+        throw new Error('Undefined type');
     }
   });
   return compact(flattenDeep(plained)).join('\n');
