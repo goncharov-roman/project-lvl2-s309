@@ -6,36 +6,25 @@ const genAst = (tree1, tree2) => {
     if (tree1[key] && tree2[key]) {
       if (isPlainObject(tree1[key]) && isPlainObject(tree2[key])) {
         return [...acc, {
-          type: 'complex',
-          key,
-          children: genAst(tree1[key], tree2[key]),
+          type: 'complex', key, children: genAst(tree1[key], tree2[key]),
         }];
       }
       if (tree1[key] === tree2[key]) {
         return [...acc, {
-          type: 'actual',
-          key,
-          oldValue: tree1[key],
+          type: 'actual', key, oldValue: tree1[key],
         }];
       }
       return [...acc, {
-        type: 'changed',
-        key,
-        oldValue: tree1[key],
-        newValue: tree2[key],
+        type: 'changed', key, oldValue: tree1[key], newValue: tree2[key],
       }];
     }
     if (!tree1[key]) {
       return [...acc, {
-        type: 'added',
-        key,
-        newValue: tree2[key],
+        type: 'added', key, newValue: tree2[key],
       }];
     }
     return [...acc, {
-      type: 'deleted',
-      key,
-      oldValue: tree1[key],
+      type: 'deleted', key, oldValue: tree1[key],
     }];
   }, []);
   return result;
