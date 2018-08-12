@@ -28,7 +28,6 @@ const render = (ast, l = 0) => {
         throw new Error('Undefined type');
     }
   });
-  console.log(diff);
   const margin = '    '.repeat(l);
   const result = flatten(diff).join(`\n${margin}`);
   return `{\n${margin}${result}\n${margin}}`;
