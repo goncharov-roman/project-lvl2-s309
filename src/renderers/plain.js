@@ -1,6 +1,6 @@
 import { compact, flattenDeep, isPlainObject } from 'lodash';
 
-const checkValue = value => (!isPlainObject(value) ? `${value}` : '[complex value]');
+const formatValue = value => (!isPlainObject(value) ? `${value}` : '[complex value]');
 
 const render = (ast, path = []) => {
   const plained = ast.filter(item => item.type !== 'actual').map((item) => {
@@ -15,9 +15,9 @@ const render = (ast, path = []) => {
       }
       case 'deleted': return `${startLine} deleted`;
       case 'changed': {
-        const checkedOldValue = checkValue(oldValue);
-        const checkedNewValue = checkValue(newValue);
-        return `${startLine} changed. From ${checkedOldValue} to ${checkedNewValue}`;
+        const formattedOldValue = formatValue(oldValue);
+        const formattedNewValue = formatValue(newValue);
+        return `${startLine} changed. From ${formattedOldValue} to ${formattedNewValue}`;
       }
       case 'complex': return render(children, [...path, key]);
       default: throw new Error('Undefined type');

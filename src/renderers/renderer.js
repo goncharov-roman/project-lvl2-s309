@@ -1,4 +1,4 @@
-import { isPlainObject, flattenDeep } from 'lodash';
+import { isPlainObject, flatten } from 'lodash';
 
 const stringify = (value, l) => {
   if (!isPlainObject(value)) return value;
@@ -14,22 +14,23 @@ const render = (ast, l = 0) => {
     } = item;
     switch (type) {
       case 'complex':
-        return [`    ${key}: ${render(children, l + 1)}`];
+        return `    ${key}: ${render(children, l + 1)}`;
       case 'actual':
-        return [`    ${key}: ${stringify(oldValue, l + 1)}`];
+        return `    ${key}: ${stringify(oldValue, l + 1)}`;
       case 'changed':
-        return [[`  - ${key}: ${stringify(oldValue, l + 1)}`],
-          [`  + ${key}: ${stringify(newValue, l + 1)}`]];
+        return [`  - ${key}: ${stringify(oldValue, l + 1)}`,
+          `  + ${key}: ${stringify(newValue, l + 1)}`];
       case 'deleted':
-        return [`  - ${key}: ${stringify(oldValue, l + 1)}`];
+        return `  - ${key}: ${stringify(oldValue, l + 1)}`;
       case 'added':
-        return [`  + ${key}: ${stringify(newValue, l + 1)}`];
+        return `  + ${key}: ${stringify(newValue, l + 1)}`;
       default:
         throw new Error('Undefined type');
     }
   });
+  console.log(diff);
   const margin = '    '.repeat(l);
-  const result = flattenDeep(diff).join(`\n${margin}`);
+  const result = flatten(diff).join(`\n${margin}`);
   return `{\n${margin}${result}\n${margin}}`;
 };
 
