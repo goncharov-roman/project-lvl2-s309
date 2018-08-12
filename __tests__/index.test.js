@@ -2,72 +2,75 @@ import fs from 'fs';
 import genDiff from '../src';
 
 const dir = `${__dirname}/__fixtures__`;
-const readFilesAndExpected = (extension, outputFormat) => {
-  const file1 = `${dir}/before.${extension}`;
-  const file2 = `${dir}/after.${extension}`;
-  let outputFormatInExpected = '';
-  if (outputFormat === 'json') {
-    outputFormatInExpected = '-json';
-  } else if (outputFormat === 'plain') {
-    outputFormatInExpected = '-plain';
-  } else {
-    outputFormatInExpected = '';
-  }
-  const expected = fs.readFileSync(`${dir}/expected${outputFormatInExpected}.txt`, 'utf-8').trim();
-  const result = genDiff(file1, file2, outputFormat);
-  return { result, expected };
-};
 
 test('tree format json test', () => {
-  const { result, expected } = readFilesAndExpected('json', 'tree');
-
+  const file1 = `${dir}/before.json`;
+  const file2 = `${dir}/after.json`;
+  const expected = fs.readFileSync(`${dir}/expected.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'tree');
   expect(result).toBe(expected);
 });
 
 test('plain format json test', () => {
-  const { result, expected } = readFilesAndExpected('json', 'plain');
-
+  const file1 = `${dir}/before.json`;
+  const file2 = `${dir}/after.json`;
+  const expected = fs.readFileSync(`${dir}/expected-plain.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'plain');
   expect(result).toBe(expected);
 });
 
 test('json format json test', () => {
-  const { result, expected } = readFilesAndExpected('json', 'json');
-
+  const file1 = `${dir}/before.json`;
+  const file2 = `${dir}/after.json`;
+  const expected = fs.readFileSync(`${dir}/expected-json.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'json');
   expect(result).toBe(expected);
 });
 
 test('tree format yaml test', () => {
-  const { result, expected } = readFilesAndExpected('yml', 'tree');
-
+  const file1 = `${dir}/before.yml`;
+  const file2 = `${dir}/after.yml`;
+  const expected = fs.readFileSync(`${dir}/expected.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'tree');
   expect(result).toBe(expected);
 });
 
 test('plain format yaml test', () => {
-  const { result, expected } = readFilesAndExpected('yml', 'plain');
-
+  const file1 = `${dir}/before.yml`;
+  const file2 = `${dir}/after.yml`;
+  const expected = fs.readFileSync(`${dir}/expected-plain.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'plain');
   expect(result).toBe(expected);
 });
 
 test('json format yaml test', () => {
-  const { result, expected } = readFilesAndExpected('yml', 'json');
-
+  const file1 = `${dir}/before.yml`;
+  const file2 = `${dir}/after.yml`;
+  const expected = fs.readFileSync(`${dir}/expected-json.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'json');
   expect(result).toBe(expected);
 });
 
 test('tree format ini test', () => {
-  const { result, expected } = readFilesAndExpected('ini', 'tree');
-
+  const file1 = `${dir}/before.ini`;
+  const file2 = `${dir}/after.ini`;
+  const expected = fs.readFileSync(`${dir}/expected.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'tree');
   expect(result).toBe(expected);
 });
 
 test('plain format ini test', () => {
-  const { result, expected } = readFilesAndExpected('ini', 'plain');
-
+  const file1 = `${dir}/before.ini`;
+  const file2 = `${dir}/after.ini`;
+  const expected = fs.readFileSync(`${dir}/expected-plain.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'plain');
   expect(result).toBe(expected);
 });
 
 test('json format ini test', () => {
-  const { result, expected } = readFilesAndExpected('ini', 'json');
-
+  const file1 = `${dir}/before.ini`;
+  const file2 = `${dir}/after.ini`;
+  const expected = fs.readFileSync(`${dir}/expected-json.txt`, 'utf-8').trim();
+  const result = genDiff(file1, file2, 'json');
   expect(result).toBe(expected);
 });
