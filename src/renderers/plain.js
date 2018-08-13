@@ -1,4 +1,4 @@
-import { compact, flattenDeep, isPlainObject } from 'lodash';
+import { flatten, isPlainObject } from 'lodash';
 
 const formatValue = value => (!isPlainObject(value) ? `${value}` : '[complex value]');
 
@@ -23,7 +23,7 @@ const render = (ast, path = []) => {
       default: throw new Error('Undefined type');
     }
   });
-  return compact(flattenDeep(plained)).join('\n');
+  return flatten(plained).join('\n');
 };
 
 export default render;
